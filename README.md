@@ -1,2 +1,2 @@
-# Game-Arena
+# Quiz-Arena
 Quiz Arena
