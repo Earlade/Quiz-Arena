@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.4.0/remixicon.css"
+      integrity="sha512-hH7VMMVfPgfkpYx2GazOEG6RrYM+y8cS7FzccwBTWQeyhPv01XYk0MVcuhh4EAimOELWvqKjhNwes/UsYoyN6w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.4.0/remixicon.min.css"
+      integrity="sha512-6sfYTBLNjOZhwJ5g/J0529qHqIdXxO1BycUHd1LIJjEzVCzX8cHtoXDgd+ylrqCl/OZM/RMDgkn2Dd41lJsJjw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Smooch+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Quiz Arena</title>
+    <style>
+      * {
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      #start-game {
+        font-size: 64px;
+        transition: transform 0.5s ease, font-size 0.5s ease;
+      }
+      
+      .zoom-out {
+        transform: scale(0.5);
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-950 flex justify-center text-white">
+    <main
+      class="max-w-screen-2xl max-h-[1124px] w-screen h-screen flex items-center justify-center"
+    >
+      <div id="start-game"></div>
+    </main>
+  </body>
+
+  <script>
+    let arr = ['3', '2', '1', 'Ready?', 'Go!']; 
+    let i = 0;
+    const startGame = setInterval(() => {
+    	let element = document.getElementById('start-game');
+        element.innerHTML = arr[i];
+        i += 1;
+        element.classList.add('zoom-out');
+        setTimeout(() => {
+        	element.classList.remove('zoom-out')
+        }, 800);
+        if (i == 5) clearInterval(startGame);
+    }, 1000);
+
+  </script>
+</html>
