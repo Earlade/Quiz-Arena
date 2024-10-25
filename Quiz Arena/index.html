@@ -1,46 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Poppins:wght@100;900&display=swap" rel="stylesheet">
 
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.4.0/remixicon.css">
-        <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.4.0/remixicon.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 
-        <title>Quiz Arena</title>
-    </head>
+    <title>Quiz Arena</title>
+    <style>
+      * {
+        font-family: 'Manrope', sans-serif;
+      }
 
-    <body class="bg-zinc-900 text-white">
-        <header class="px-10 py-6 bg-[#9038fc]">
-            <nav class="flex items-center justify-between gap-x-16">
-                <div class="flex items-center gap-x-4">
-                    <img src="./asset/logo.png" alt="logo" class="w-12 h-12">
-                    <span class="text-3xl font-extrabold">Quiz Arena</span>
-                </div>
-                <a href="/my-stats" class="text-xl font-semibold">My Stats</a>
-            </nav>
-        </header>
+      .count-down {
+        transition: transform 0.5s ease-out, font-size 0.5s ease-out;
+      }
+      
+      .grid-col-repeat-auto-minmax {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(350px, 1fr)); 
+        row-gap: 25px;
+        column-gap: 25px;
+      }
 
-        <main class="px-10 py-32 flex flex-col items-center gap-y-8">
-            <h1 class="text-5xl font-extrabold">Welcome to <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec]">Quiz Arena</span></h1>
-            <div class="text-center">
-                <p class="text-2xl">Are you ready to take the challenge?</p>
-                <p class="text-2xl">Let's see how high you can score in 30 seconds!</p>
+      @media (max-width: 780px) { 
+        .grid-col-repeat-auto-minmax {
+          grid-template-columns: repeat(1, minmax(350px, 1fr));
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-950 flex justify-center text-white">
+    <main class="max-w-screen-2xl max-h-[1124px] w-screen h-screen">
+      <div class="w-full h-full flex justify-center items-center" id="before-game">
+        <div id="start-game" class="text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec] count-down"></div>
+      </div>
+      <div class="hidden flex-col" id="quiz">
+        <nav class="w-full min-h-20 h-20 flex items-center justify-between px-12">
+            <span class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec]">Quiz Arena</span>
+        </nav>
+        <content class="px-10 flex flex-col">
+			<div class="w-full flex justify-end">
+            	<div class="w-14 h-14 bg-[#9038fc] rounded-full flex justify-center items-center"><span class="text-2xl font-semibold" id="timer">30</span></div>
+                
             </div>
-            <div class="flex items-center gap-x-4">
-                <input type="number" min="5" max="50" placeholder="Enter number of questions" autocomplete="off" class="px-5 py-2 w-[300px] bg-transparent border-[3px] border-[#9038fc] focus:outline-none focus:border-[#57ddec] rounded-lg placeholder-gray-400 text-lg text-center" />
-                <a href="./quiz.html">
-                    <button class="px-6 py-2.5 flex items-center gap-x-2 transition ease-in-out duration-500 bg-[#9038fc] hover:bg-gradient-to-r from-[#9038fc] to-[#57ddec] hover:-translate-y-1 rounded-lg font-bold text-xl">
-                        <i class="ri-play-large-fill"></i>
-                        <span>Start</span>
-                    </button>
-                </a>
+            <div class="w-full h-full flex flex-col space-y-3.5 items-center justify-center">
+              <div class="w-full h-full flex justify-center">
+                  <h1 class="text-lg font-bold px-5 py-1 bg-[#9038fc] rounded-3xl">Question no <span id="question-number">1</span></h1>
+              </div>
+              <div class="w-full h-full flex justify-center">
+                  <p class="font-bold text-lg">What does "Hello World" mean?</p>
+              </div>
+              <br/>
+              <br/>
+              <div class="grid-col-repeat-auto-minmax">
+              	<div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center gap-x-2 transition ease-in-out duration-500 bg-[#9038fc] hover:bg-gradient-to-r from-[#9038fc] to-[#57ddec] hover:-translate-y-1">A. <span class="ml-2.5">Saying hello to World</span></div>
+                <div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center gap-x-2 transition ease-in-out duration-500 bg-[#9038fc] hover:bg-gradient-to-r from-[#9038fc] to-[#57ddec] hover:-translate-y-1">B. <span class="ml-2.5">Welcome to World</span></div>
+                <div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center gap-x-2 transition ease-in-out duration-500 bg-[#9038fc] hover:bg-gradient-to-r from-[#9038fc] to-[#57ddec] hover:-translate-y-1">C. <span class="ml-2.5">The world says hello</span></div>
+                <div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center gap-x-2 transition ease-in-out duration-500 bg-[#9038fc] hover:bg-gradient-to-r from-[#9038fc] to-[#57ddec] hover:-translate-y-1">D. <span class="ml-2.5">I don't know</span></div>
+              </div>
             </div>
-        </main>
-    </body>
+		</content>
+      </div>
+    </main>
+
+    <script>
+      // Start game timer duration
+      let arr = ['3', '2', '1', 'Ready?', 'Quiz Time!']; 
+      let i = 0;
+      const startGame = setInterval(() => {
+        let element = document.getElementById('start-game');
+        element.innerHTML = arr[i];
+        element.classList.add('scale-50');
+
+        setTimeout(() => {
+          element.classList.remove('scale-50');
+        }, 800);
+		
+        i += 1;
+        if (i === 5) {
+          clearInterval(startGame);
+        }
+        
+      }, 1000);
+      
+      setTimeout(() => {
+        document.getElementById('before-game').remove();
+        document.getElementById('quiz').style.display = "flex";
+        gameTimer();
+      }, 6800);
+      
+      
+      // Game Timer
+      function gameTimer() {
+      	let time = 29, question = 1;
+      	let timerInterval = setInterval(() => {
+        	document.getElementById('timer').innerHTML = time;
+            document.getElementById('question-number').innerHTML = question;
+            time -= 1;
+            if (time === -1 || question == 5) {
+            	clearInterval(timerInterval);
+                // trigger other function 
+            }
+        }, 1000);
+        
+      }
+    </script>
+  </body>
 </html>
