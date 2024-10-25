@@ -21,6 +21,19 @@
       .count-down {
         transition: transform 0.5s ease-out, font-size 0.5s ease-out;
       }
+      
+      .grid-col-repeat-auto-minmax {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(350px, 1fr)); 
+        row-gap: 25px;
+        column-gap: 25px;
+      }
+
+      @media (max-width: 780px) { 
+        .grid-col-repeat-auto-minmax {
+          grid-template-columns: repeat(1, minmax(350px, 1fr));
+        }
+      }
     </style>
   </head>
 
@@ -33,15 +46,28 @@
         <nav class="w-full min-h-20 h-20 flex items-center justify-between px-12">
             <span class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec]">Quiz Arena</span>
         </nav>
-        <content class=" px-10 flex flex-col">
+        <content class="px-10 flex flex-col">
 			<div class="w-full flex justify-end">
             	<div class="w-14 h-14 bg-[#9038fc] rounded-full flex justify-center items-center"><span class="text-2xl font-semibold" id="timer">30</span></div>
                 
             </div>
-            <div class="text-2xl text-[#9038fc] font-bold flex justify-center">
-            	<h1>Question no <span id="question-number">1</span></h1>
+            <div class="w-full h-full flex flex-col space-y-3.5 items-center justify-center">
+              <div class="w-full h-full flex justify-center">
+                  <h1 class="text-lg font-bold px-5 py-1 bg-[#9038fc] rounded-3xl">Question no <span id="question-number">1</span></h1>
+              </div>
+              <div class="w-full h-full flex justify-center">
+                  <p class="font-bold text-lg">What does "Hello World" mean?</p>
+              </div>
+              <br/>
+              <br/>
+              <div class="grid-col-repeat-auto-minmax">
+              	<div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center">A. <span class="ml-2.5">Saying hello to World</span></div>
+                <div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center">B. <span class="ml-2.5">Welcome to World</span></div>
+                <div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center">C. <span class="ml-2.5">The world says hello</span></div>
+                <div class="text-lg font-semibold h-16 bg-[#9038fc] rounded-lg p-5 flex items-center">D. <span class="ml-2.5">I don't know</span></div>
+              </div>
             </div>
-		</content>
+	</content>
       </div>
     </main>
 
