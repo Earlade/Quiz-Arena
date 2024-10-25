@@ -30,12 +30,18 @@
       }
       
       #start-game {
-        font-size: 64px;
-        transition: transform 0.5s ease, font-size 0.5s ease;
+        font-size: 50px;
+        transition: transform 0.5s ease-out, font-size 0.5s ease-in;
       }
       
       .zoom-out {
         transform: scale(0.5);
+      }
+      
+      .glowing-text {
+        background: linear-gradient(90deg, #9038fc, #57ddec);
+        color: transparent;
+        background-clip: text;
       }
     </style>
   </head>
@@ -44,12 +50,14 @@
     <main
       class="max-w-screen-2xl max-h-[1124px] w-screen h-screen flex items-center justify-center"
     >
-      <div id="start-game"></div>
+      <div class="font-bold glowing-text" id="start-game"></div>
+      <div class="hidden" id="quiz">Quiz</div>
     </main>
   </body>
 
   <script>
-    let arr = ['3', '2', '1', 'Ready?', 'Go!']; 
+  	// start game timer duration
+    let arr = ['3', '2', '1', 'Ready?', 'Quiz Time!']; 
     let i = 0;
     const startGame = setInterval(() => {
     	let element = document.getElementById('start-game');
@@ -61,6 +69,10 @@
         }, 800);
         if (i == 5) clearInterval(startGame);
     }, 1000);
-
+	
+    setTimeout(() => {
+    	document.getElementById('start-game').style.display = "none";
+        document.getElementById('quiz').style.display = "block";
+    }, 6800)
   </script>
 </html>
