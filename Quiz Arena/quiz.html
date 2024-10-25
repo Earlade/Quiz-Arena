@@ -30,8 +30,8 @@
       }
       
       #start-game {
-        font-size: 50px;
-        transition: transform 0.5s ease-out, font-size 0.5s ease-in;
+        font-size: 60px;
+        transition: transform 0.5s ease-out, font-size 0.5s ease-out;
       }
       
       .zoom-out {
@@ -43,15 +43,36 @@
         color: transparent;
         background-clip: text;
       }
+      
+      .text-neon-purple {
+        color: #8a00c4;
+      }
+      .bg-neon-purple {
+        background-color: #8a00c4;
+      }
+      .border-neon-purple {
+        border-color: #8a00c4;
+      }
     </style>
   </head>
 
   <body class="bg-slate-950 flex justify-center text-white">
     <main
-      class="max-w-screen-2xl max-h-[1124px] w-screen h-screen flex items-center justify-center"
+      class="max-w-screen-2xl max-h-[1124px] w-screen h-screen"
     >
-      <div class="font-bold glowing-text" id="start-game"></div>
-      <div class="hidden" id="quiz">Quiz</div>
+    	<div class="w-full h-full flex justify-center items-center" id="before-game">
+        	<div class="font-bold glowing-text" id="start-game"></div>
+        </div>
+      	<div class="hidden" id="quiz">
+      		<navbar
+        	class="w-full min-h-20 h-20 bg-neon-purple flex items-center justify-between px-12"
+      		>
+              <div class="text-3xl font-semibold flex space-x-3 glowing-text">
+                <img src="./asset/logo.png" alt="logo" class="w-9 h-9" />
+                <span>Quiz Arena</span>
+              </div>
+      		</navbar>
+      </div>
     </main>
   </body>
 
@@ -71,8 +92,8 @@
     }, 1000);
 	
     setTimeout(() => {
-    	document.getElementById('start-game').style.display = "none";
-        document.getElementById('quiz').style.display = "block";
+    	document.getElementById('before-game').remove();
+        document.getElementById('quiz').style.display = "flex";
     }, 6800)
   </script>
 </html>
