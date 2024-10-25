@@ -54,19 +54,26 @@
         color: transparent;
         background-clip: text;
       }
-      .border-3 {
-        border-width: 3px;
-      }
-      input {
+      input,
+      button {
         outline: none;
         border-radius: 4px;
         border-width: 3px;
         border-style: solid;
-        transition: 0.8s;
+        transition: border-color 0.5s, background 0.5s;
+      }
+
+      .start-button:hover {
+        border-width: 0px;
+        background: linear-gradient(90deg, #9038fc, #57ddec);
       }
 
       #num-of-questions:hover,
       #num-of-questions:focus {
+        border: 3px solid #57ddec;
+      }
+      #start:hover {
+        background-color: #57ddec;
         border: 3px solid #57ddec;
       }
     </style>
@@ -109,9 +116,9 @@
             id="num-of-questions"
           />
           <button
-            class="h-10 w-36 bg-neon-purple text-center border-neon-purple border-3 text-center flex justify-center items-center p-5"
+            class="w-24 bg-neon-purple text-center border-neon-purple text-center flex justify-center items-center start-button"
           >
-            <i class="ri-arrow-right-s-fill text-2xl"></i>Start
+            <i class="ri-play-fill"></i><span>Start</span>
           </button>
         </div>
       </content>
