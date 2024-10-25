@@ -29,10 +29,15 @@
       <div class="w-full h-full flex justify-center items-center" id="before-game">
         <div id="start-game" class="text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec] count-down"></div>
       </div>
-      <div class="hidden" id="quiz">
+      <div class="hidden flex-col" id="quiz">
         <nav class="w-full min-h-20 h-20 flex items-center justify-between px-12">
             <span class="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec]">Quiz Arena</span>
         </nav>
+        <content class=" px-10 flex flex-col">
+			<div class="w-full flex justify-end">
+            	<div class="w-14 h-14 bg-[#9038fc] rounded-full flex justify-center items-center" id="timer"><span class="text-2xl font-semibold">1</span></div>
+            </div>
+		</content>
       </div>
     </main>
 
@@ -59,7 +64,14 @@
       setTimeout(() => {
         document.getElementById('before-game').remove();
         document.getElementById('quiz').style.display = "flex";
+        gameTimer();
       }, 6800);
+      
+      function gameTimer() {
+      	setInterval(() => {
+        	
+        }, 1000);
+      }
     </script>
   </body>
 </html>
