@@ -35,7 +35,7 @@
         </nav>
         <content class=" px-10 flex flex-col">
 			<div class="w-full flex justify-end">
-            	<div class="w-14 h-14 bg-[#9038fc] rounded-full flex justify-center items-center" id="timer"><span class="text-2xl font-semibold">1</span></div>
+            	<div class="w-14 h-14 bg-[#9038fc] rounded-full flex justify-center items-center"><span class="text-2xl font-semibold" id="timer">30</span></div>
             </div>
 		</content>
       </div>
@@ -67,9 +67,17 @@
         gameTimer();
       }, 6800);
       
+      
+      // Game Timer
       function gameTimer() {
-      	setInterval(() => {
-        	
+      	let time = 29;
+      	let timerInterval = setInterval(() => {
+        	document.getElementById('timer').innerHTML = time;
+            time -= 1;
+            if (time === -1) {
+            	clearInterval(timerInterval);
+                // trigger other function 
+            }
         }, 1000);
       }
     </script>
