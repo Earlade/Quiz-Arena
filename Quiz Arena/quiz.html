@@ -36,6 +36,10 @@
         <content class=" px-10 flex flex-col">
 			<div class="w-full flex justify-end">
             	<div class="w-14 h-14 bg-[#9038fc] rounded-full flex justify-center items-center"><span class="text-2xl font-semibold" id="timer">30</span></div>
+                
+            </div>
+            <div class="text-2xl text-[#9038fc] font-bold flex justify-center">
+            	<h1>Question no <span id="question-number">1</span></h1>
             </div>
 		</content>
       </div>
@@ -70,15 +74,17 @@
       
       // Game Timer
       function gameTimer() {
-      	let time = 29;
+      	let time = 29, question = 1;
       	let timerInterval = setInterval(() => {
         	document.getElementById('timer').innerHTML = time;
+            document.getElementById('question-number').innerHTML = question;
             time -= 1;
-            if (time === -1) {
+            if (time === -1 || question == 5) {
             	clearInterval(timerInterval);
                 // trigger other function 
             }
         }, 1000);
+        
       }
     </script>
   </body>
