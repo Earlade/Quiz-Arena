@@ -15,15 +15,17 @@
     <title>Quiz Arena</title>
     <style>
       * {
-        font-family: 'Manrope', sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Manrope', sans-serif;
       }
 
     </style>
   </head>
 
-  <body class="bg-slate-950 flex justify-center text-white">
-    <main class="max-w-screen-2xl max-h-[1124px] w-screen h-screen">
-      <header class="px-10 py-6 bg-[#9038fc]">
+  <body class="bg-zinc-900 text-white">
+        <header class="px-10 py-6 bg-[#9038fc]">
             <nav class="flex items-center justify-between gap-x-16">
                 <div class="flex items-center gap-x-4">
                     <img src="https://quiz-arena-game.vercel.app/asset/logo.png" alt="logo" class="w-12 h-12">
@@ -32,37 +34,34 @@
                 <a href="/my-stats" class="text-xl font-semibold underline underline-offset-4">My Stats</a>
             </nav>
         </header>
+
         <main class="px-10 py-32 flex flex-col items-center gap-y-8">
-        	<div class="text-2xl font-bold">Challenged : <span>5</span> questions</div>
-            <div class="flex flex-row gap-x-5 text-xl">
-            	<div class="flex items-center flex-col">
+            <div class="text-2xl font-bold">Challenged : <span>5</span> questions</div>
+            <div class="flex flex-row gap-5 text-xl flex-wrap justify-evenly">
+            	<div class="w-48 flex items-center flex-col">
                 	<div class="font-bold">Correct answer</div>
                 	<div>5</div>
                 </div>
-                <div class="border border-r-3 border-white"></div>
-                <div class="flex items-center flex-col">
+                <div class="w-48 flex items-center flex-col">
                 	<div class="font-bold">Wrong answer</div>
                 	<div>0</div>
                 </div>
-                <div class="border border-r-3 border-white"></div>
-                <div class="flex items-center flex-col">
+                <div class="w-48 flex items-center flex-col">
                 	<div class="font-bold">Unsolved</div>
                 	<div>0</div>
                 </div>
-                <div class="border border-r-3 border-white"></div>
-                <div class="flex items-center flex-col">
+                <div class="w-48 flex items-center flex-col">
                 	<div class="font-bold">Time left</div>
                 	<div>0<span>s</span></div>
                 </div>
             </div>
             <br/>
             <br/>
-            <div class="text-3xl font-bold">
+            <div class="text-3xl font-bold text-center">
             	You scored <span>100</span>%. <span>Congratulation!</span>
             </div>
         </main>
-    </main>
-  </body>
+    </body>
   <script>
    
   </script>
