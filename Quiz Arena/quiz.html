@@ -70,11 +70,13 @@
       </div>
     </main>
 
-    <script>
-      // Start game timer duration
-      let arr = ['3', '2', '1', 'Ready?', 'Quiz Time!']; 
-      let i = 0;
-      const startGame = setInterval(() => {
+    
+  </body>
+	<script>
+    // Start game timer duration
+    let arr = ['3', '2', '1', 'Ready?', 'Quiz Time!']; 
+    let i = 0;
+    const startGame = setInterval(() => {
         let element = document.getElementById('start-game');
         element.innerHTML = arr[i];
         element.classList.add('scale-50');
@@ -87,30 +89,26 @@
         if (i === 5) {
           clearInterval(startGame);
         }
-        
       }, 1000);
       
-      setTimeout(() => {
+    setTimeout(() => {
         document.getElementById('before-game').remove();
         document.getElementById('quiz').style.display = "flex";
         gameTimer();
       }, 6800);
       
       
-      // Game Timer
-      function gameTimer() {
-      	let time = 29, question = 1;
-      	let timerInterval = setInterval(() => {
-        	document.getElementById('timer').innerHTML = time;
-            document.getElementById('question-number').innerHTML = question;
-            time -= 1;
-            if (time === -1 || question == 5) {
-            	clearInterval(timerInterval);
-                location.replace("/")
-            }
-        }, 1000);
-        
-      }
+    // Game Timer
+    function gameTimer() {
+      let time = 29, question = 1;
+      let timerInterval = setInterval(() => {
+        document.getElementById('timer').innerHTML = time;
+        document.getElementById('question-number').innerHTML = question;
+        time -= 1;
+        if (time === -1 || question == 5) {
+            clearInterval(timerInterval);
+            location.replace("/")
+        }}, 1000);
+    }
     </script>
-  </body>
 </html>
