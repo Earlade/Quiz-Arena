@@ -69,7 +69,7 @@
 	    </content>
       </div>
       <div class="w-full h-full hidden justify-center items-center" id="time-out">
-        <span class="text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec] count-down" id="stop"></span>
+        <span id="stop" class="text-5xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#9038fc] to-[#57ddec] count-down" ></span>
       </div>
     </main>
   </body>
@@ -115,10 +115,10 @@
         }}, 1000);
         
         
-        // Answer
+      // Answer
       let questionLimit = 5;
-        document.getElementById('a').addEventListener('click', () => {
-            question += 1;
+     	document.getElementById('a').addEventListener('click', () => {
+        	question += 1;
             document.getElementById('question-number').innerHTML = question;
             if (question == questionLimit + 1) {
             	clearInterval('timeInterval');
@@ -153,8 +153,12 @@
         function timeUp(message) {
         	document.getElementById('quiz').remove();
             document.getElementById('time-out').style.display = "flex";
-            document.getElementById('stop').innerHTML = message;
             document.getElementById('stop').classList.add('scale-50');
+            setTimeout(() => {
+            	document.getElementById('stop').classList.remove('scale-50');
+            }, 50);
+            document.getElementById('stop').innerHTML = message;
+            
 
             setTimeout(() => {
             	location.replace("/");
